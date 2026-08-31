@@ -33,8 +33,8 @@ class VideoResponse(BaseModel):
 class UserCreate(BaseModel):
     login: str = Field(..., example="Логин")
     password: str = Field(..., example="Пароль")
-    name: int = Field(None, example="Имя")
-    surname: float = Field(None, example="Фамилия")
+    name: str = Field(None, example="Имя")
+    surname: str = Field(None, example="Фамилия")
 
 class UserResponse(BaseModel):
     login: str

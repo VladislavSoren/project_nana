@@ -2,7 +2,15 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug app locally",
+            "name": "Debug FastAPI app",
+            "type": "python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": ["app.main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"],
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Debug app locally in container",
             "type": "python",
             "request": "attach",
             "connect": {

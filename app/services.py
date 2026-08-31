@@ -1,6 +1,7 @@
 from fastapi import HTTPException, UploadFile, status
 from fastapi.responses import FileResponse
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy import select
 
 from app.crud import _delete_file, _store_video_file, build_video_file_response
 from app.models import Course, Video, User
@@ -179,7 +180,14 @@ class UserService:
             with self.uow_factory() as uow:
                 if uow.user is None or uow.session is None:
                     raise RuntimeError("UoW не инициализирован")
-                user = User(**obj_in.model_dump())
+
+                videos = uow.video.get_introductory()
+
+                # Прописать получение названий видео
+                videos_names = ...
+
+                # Прописать передачу videos_names в User
+                user = User(**obj_in.model_dump()) # Подправить эту строку
                 uow.user.add(user)
                 uow.commit()
                 uow.session.refresh(user)

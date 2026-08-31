@@ -24,6 +24,11 @@ class CourseRepository:
             .all()
         )
 
+    def get_all(self):
+            stmt = select(Course)
+            return self.session.execute(stmt).all()
+
+
 class VideoRepository:
     def __init__(self, session: Session):
         self.session = session
@@ -43,7 +48,12 @@ class VideoRepository:
             .limit(number)
             .all()
         )
-    
+
+    def get_introductory(self):
+        stmt = select(Video).where(...)  # здесь прописать условия поиска по слову "ознакомительное" 
+        return self.session.execute(stmt).scalars()
+
+
 class UserRepository:
     def __init__(self, session: Session):
         self.session = session
