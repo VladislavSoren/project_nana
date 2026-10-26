@@ -57,6 +57,10 @@ class User(Base):
     # updated_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), onupdate=lambda: datetime.now(timezone.utc))
 
 
+class Role(Base):
+    __tablename__ = 'role'
+
+
 class RefreshToken(Base):
     __tablename__ = 'refresh_token'
 
@@ -67,3 +71,4 @@ class RefreshToken(Base):
     expires_at = Column(DateTime(timezone=True), nullable=False)
     revoked_at = Column(DateTime(timezone=True), nullable=True)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc))
+
